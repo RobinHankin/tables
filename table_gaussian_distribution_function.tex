@@ -31,9 +31,13 @@ line gives values for \(2.90-2.99\).  To find the value for 2.93,
 choose the entry with column heading ``0.03'' to obtain 0.9983.
 
 \begin{tikzpicture}[remember picture,overlay]
-  \node at (current page.south east)[anchor = south east]{\includegraphics[width=1in]{AUT-logo-block.pdf}\phantom{\rule[-10mm]{10mm}{10mm}}};
+  \node[anchor=south east,
+    xshift=-1cm,
+    yshift=1cm]
+  at (current page.south east){\includegraphics[width=1in]{AUT-logo-block.pdf}};
+  \node[anchor=south west,xshift=1cm,yshift=1cm]
+  at (current page.south west){\tt https://github.com/RobinHankin/tables.git};
 \end{tikzpicture}
-
 
 
 \end{document}

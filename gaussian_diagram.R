@@ -9,6 +9,7 @@ polygon(x=c(x,rev(x)),y=c(rep(0,n),dnorm(rev(x))),col='gray',border=NA)
 x <- seq(from=-3,to=3,len=n)
 points(x,dnorm(x),type='l',lwd=3)
 abline(0,0)
-text(1,0.35,'z')
+par(xpd=TRUE)
+text(1,-0.1,'z')
 
 dev.off()

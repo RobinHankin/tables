@@ -1,0 +1,7 @@
+.Rdata
+.Rproj.user
+.Rhistory
+*.Rout
+*.pdf
+*.aux
+*.log

@@ -26,8 +26,8 @@ colnames(x) <-
 write("",file=filename,append=FALSE)
 
 for(i in seq_len(nrow(x))){
-  bodyline <- paste(rownames(x)[i],paste(x[i,],collapse = "&"),sep= "&")
-  print(bodyline)
+  bodyline <- paste("{\\large ",rownames(x)[i],"}&",collapse="")  %>%
+    paste(paste(x[i,],collapse="&"))
   if((i>1) & (i%%5==1)){
     bodyline %<>% paste("\\\\[3mm]")
   } else {

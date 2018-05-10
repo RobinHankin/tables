@@ -1,3 +1,8 @@
+## This file creates "gaussian_table_values.txt" which holds suitably
+## rounded numerical values of Gaussian distribution function.  File
+## gaussian_table_values.txt is imported by file
+## table_gaussian_distribution_function.tex.
+
 filename <- "gaussian_table_values.txt"
 library("magrittr")
 x <- 
@@ -18,9 +23,7 @@ colnames(x) <-
   sprintf("%1.2f", .)         
 
 
-header <- paste(colnames(x),collapse = " & ")  %>% paste("\\\\  \\hline",collapse="")
-header <- paste("&" ,header)
-write(header,file=filename,append=FALSE)
+write("",file=filename,append=FALSE)
 
 for(i in seq_len(nrow(x))){
   bodyline <- paste(rownames(x)[i],paste(x[i,],collapse = "&"),sep= "& \\,\\, ")

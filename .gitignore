@@ -8,4 +8,5 @@
 gaussian_table_values.txt
 chisq_table_values.txt
 *.txt~
+*.tex~
 .gitignore~

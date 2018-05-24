@@ -23,20 +23,21 @@
   & {\Large $\chi^2_{0.975}$}
   & {\Large $\chi^2_{0.99}$}
   & {\Large $\chi^2_{0.995}$}
-  \rule[-4mm]{1mm}{10mm}
+  \rule[-4mm]{0mm}{10mm}
   \\  \hline
 \input{chisq_table_values.txt}
   \hline
 \end{tabular}
 \end{table}
 
-\noindent
-\(\displaystyle P(Z\leqslant z)=\Phi(z)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^z\exp\left(-u^2/2\right)\,\mathrm{d}u\)\hfill\hbox{\includegraphics[align=c,width=2.2in]{chisq_diagram.pdf}}
+\begin{centering}
+\includegraphics[align=c,width=2.2in]{chisq_diagram.pdf}
+\end{centering}
 
 \noindent For example, to calculate \(P(Z\leqslant 2.93)\), the last
 line gives values for \(2.90-2.99\).  To find the value for 2.93,
 choose the entry with column heading ``.03'' to obtain 0.9983.
-
+\\
 \begin{tikzpicture}[remember picture,overlay]
   \node[anchor=south east,
     xshift=-1cm,
@@ -44,7 +45,6 @@ choose the entry with column heading ``.03'' to obtain 0.9983.
   at (current page.south east){
     {\tt https://github.com/RobinHankin/tables.git}\rule{90mm}{0mm}\includegraphics[width=1in]{AUT-logo-block.pdf}};
 \end{tikzpicture}
-
 
 
 \end{document}

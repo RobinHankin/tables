@@ -10,5 +10,5 @@ all:
 	pdflatex table_gaussian_percentiles
 
 clean:
-	rm -f  *.aux *.log *.out *.Rout *.txt gaussian_diagram.pdf table_gaussian_distribution_function.pdf
+	rm -f  *.aux *.log *.out *.Rout *.txt chisq_diagram.pdf gaussian_diagram?.pdf table*.pdf *.tex~
 

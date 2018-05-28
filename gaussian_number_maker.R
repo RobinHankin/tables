@@ -1,5 +1,6 @@
 ## This file creates "gaussian_table_values.txt" which holds suitably
-## rounded numerical values of Gaussian distribution function.  File
+## rounded numerical values of Gaussian distribution function in a
+## nice LaTeX format including nice line spacing.  File
 ## gaussian_table_values.txt is imported by file
 ## table_gaussian_distribution_function.tex.
 

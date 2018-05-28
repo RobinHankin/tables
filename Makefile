@@ -14,7 +14,12 @@ all:
 	R CMD BATCH chisq_number_maker.R
 	pdflatex table_chisq
 	pdflatex table_chisq
+	R CMD BATCH fisher_diagram.R
+	R CMD BATCH fisher_number_maker.R
+	pdflatex table_fisher
+	pdflatex table_fisher
+
 
 clean:
-	rm -f  *.aux *.log *.out *.Rout *.txt chisq_diagram.pdf gaussian_diagram?.pdf table*.pdf *.tex~
+	rm -f  *.aux *.log *.out *.Rout *.txt chisq_diagram.pdf gaussian_diagram?.pdf fisher_diagram.pdf table*.pdf *.tex~
 

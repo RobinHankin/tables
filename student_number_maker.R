@@ -3,6 +3,9 @@
 ## distribution.  File student_table_values.txt is imported by file
 ## table_student.tex
 
+## File student_diagram.pdf is created by gaussian_diagram.R
+
+
 
 library("magrittr")
 filename <- "student_table_values.txt"

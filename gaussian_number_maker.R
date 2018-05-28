@@ -4,6 +4,9 @@
 ## gaussian_table_values.txt is imported by file
 ## table_gaussian_distribution_function.tex.
 
+## Files gaussian_diagram[123].pdf are created by gaussian_diagram.R
+
+
 filename <- "gaussian_table_values.txt"
 library("magrittr")
 x <- 

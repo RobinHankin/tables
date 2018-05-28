@@ -11,6 +11,9 @@ all:
 	R CMD BATCH gaussian_number_maker3.R
 	pdflatex table_gaussian_percentiles
 	pdflatex table_gaussian_percentiles
+	R CMD BATCH student_number_maker.R
+	pdflatex table_student
+	pdflatex table_student
 
 clean:
 	rm -f  *.aux *.log *.out *.Rout *.txt chisq_diagram.pdf gaussian_diagram?.pdf table*.pdf *.tex~

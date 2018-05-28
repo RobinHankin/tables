@@ -1,0 +1,44 @@
+\documentclass[a4paper]{article}
+
+\usepackage[margin=2cm]{geometry}
+\usepackage{amssymb}
+\usepackage{pdfpages}
+\usepackage{graphbox}
+\usepackage{tikz}
+\usepackage{graphicx}  % for \rotatebox{}, used in fisher_table_values.R
+\usepackage{multirow}  % for \multirow{},  used in fisher_table_values.R
+\begin{document}
+
+\begin{center}
+  {\Large\bf Ninety-fifth percentiles of the Fisher distribution}
+\end{center}
+
+\rule{0mm}{5mm}
+\pagestyle{empty}
+\thispagestyle{empty}
+\begin{table}[ht]
+\centering
+\begin{tabular}{rr|ccccccccc}
+  &&\multicolumn{9}{c}{Numerator degrees of freedom\rule[-4mm]{0mm}{4mm}}\\
+  & & {\large 1} & {\large 2} & {\large 3} & {\large 4} & {\large 5} & {\large 10} &{\large 15} &{\large 20}& {\large 30}\\  \hline
+\input{fisher_table_values.txt}
+  \hline
+\end{tabular}
+\end{table}
+
+\begin{centering}
+\includegraphics[align=c,width=2.2in]{chisq_diagram.pdf}
+\end{centering}
+
+\noindent For example, to calculate {\large FISHER}
+\\
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=south east,
+    xshift=-1cm,
+    yshift=1cm]
+  at (current page.south east){
+    {\tt https://github.com/RobinHankin/tables.git}\rule{90mm}{0mm}\includegraphics[width=1in]{AUT-logo-block.pdf}};
+\end{tikzpicture}
+
+
+\end{document}

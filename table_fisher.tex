@@ -20,7 +20,7 @@
 \centering
 \begin{tabular}{rr|ccccccccc}
   &&\multicolumn{9}{c}{Numerator degrees of freedom\rule[-4mm]{0mm}{4mm}}\\
-  & & {\large 1} & {\large 2} & {\large 3} & {\large 4} & {\large 5} & {\large 10} &{\large 15} &{\large 20}& {\large 30}\\  \hline
+  & & {\large 1} & {\large 2} & {\large 3} & {\large 4} & {\large 5} & {\large 10} &{\large 15} &{\large 20}& {\large 30}\\[1mm]  \hline
 \input{fisher_table_values.txt}
   \hline
 \end{tabular}
@@ -30,8 +30,11 @@
 \includegraphics[align=c,width=2.2in]{fisher_diagram.pdf}
 \end{centering}
 
-\noindent For example, to calculate {\large FISHER}
-\\
+\noindent For example, to calculate the $95^\mathrm{th}$ percentile of
+the Fisher distribution with 1 and 2 degrees of freedom, use the first
+column and the second row to find 18.5.  Thus, if~$X\sim F^1_2$,
+then~$P(X\leq 18.5) = 0.95$.
+
 \begin{tikzpicture}[remember picture,overlay]
   \node[anchor=south east,
     xshift=-1cm,

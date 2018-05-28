@@ -1,12 +1,12 @@
 all:
 	R CMD BATCH gaussian_diagram.R
-	R CMD BATCH gaussian_number_maker.R
+	R CMD BATCH gaussian_number_maker1.R
 	pdflatex table_gaussian_distribution_function
 	pdflatex table_gaussian_distribution_function
 	R CMD BATCH chisq_diagram.R
 	R CMD BATCH chisq_number_maker.R
-	pdflatex  table_chisq	
-	pdflatex  table_chisq	
+	pdflatex table_chisq
+	pdflatex table_chisq
 	R CMD BATCH gaussian_number_maker2.R
 	R CMD BATCH gaussian_number_maker3.R
 	pdflatex table_gaussian_percentiles

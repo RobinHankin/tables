@@ -1,13 +1,13 @@
-## This file creates "gaussian_table_values.txt" which holds suitably
+## This file creates "gaussian_table_values1.txt" which holds suitably
 ## rounded numerical values of Gaussian distribution function in a
 ## nice LaTeX format including nice line spacing.  File
-## gaussian_table_values.txt is imported by file
+## gaussian_table_values1.txt is imported by file
 ## table_gaussian_distribution_function.tex.
 
 ## Files gaussian_diagram[123].pdf are created by gaussian_diagram.R
 
 
-filename <- "gaussian_table_values.txt"
+filename <- "gaussian_table_values1.txt"
 library("magrittr")
 x <- 
   seq(from=0, by=0.01,to=3.09) %>%

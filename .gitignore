@@ -5,7 +5,7 @@
 *.pdf
 *.aux
 *.log
-gaussian_table_values.txt
+gaussian_table_values1.txt
 gaussian_table_values2.txt
 gaussian_table_values3.txt
 chisq_table_values.txt

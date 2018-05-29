@@ -30,9 +30,7 @@ formatted <- function(x){  # different formatting for one-digit and two-digit va
 rownames(x) <- as.character(df)
 colnames(x) <-  p
 
-
-
-write("",file=filename,append=FALSE)
+write("%this file is not human-readable, it was created by 'chisq_number_maker.R'",file=filename,append=FALSE)
 
 for(i in seq_len(nrow(x))){
   text_rows <- formatted(x[i,])

@@ -27,7 +27,7 @@ colnames(x) <-
   sprintf("%1.2f", .)         
 
 
-write("",file=filename,append=FALSE)
+write("%this file is not human-readable, it was created by 'gaussian_number_maker1.R'",file=filename,append=FALSE)
 
 for(i in seq_len(nrow(x))){
   bodyline <- paste("{\\large ",rownames(x)[i],"}&",collapse="")  %>%

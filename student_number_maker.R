@@ -35,8 +35,8 @@ jj[jj=="Inf"] <- "$\\infty$"
 rownames(x) <- jj
 colnames(x) <-  p
 
-write("",file=filename,append=FALSE)
-browser()
+write("%this file is not human-readable, it was created by 'student_number_maker.R'",file=filename,append=FALSE)
+
 for(i in seq_len(nrow(x))){
   text_rows <- formatted(x[i,])
   bodyline <- paste("{\\large ",rownames(x)[i],"}&",collapse="")  %>%

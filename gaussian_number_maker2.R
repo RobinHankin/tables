@@ -11,7 +11,7 @@ qq <- sort(c(qq,0.5,1-qq))   # increasing
 
 library("magrittr")
 
-write("",file=filename,append=FALSE)
+write("%this file is not human-readable, it was created by 'gaussian_number_maker2.R'",file=filename,append=FALSE)
 
 for(i in qq){
   bodyline <- paste(i,round(qnorm(i),4), sep=" & ") %>% paste("\\\\")

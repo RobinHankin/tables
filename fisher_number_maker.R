@@ -35,8 +35,8 @@ jj <- as.character(den)
 jj[jj=="Inf"] <- "$\\infty$"
 rownames(x) <- jj
 colnames(x) <-  num
-
-write("\\multirow{25}{*}{\\rotatebox{90}{Denominator degrees of freedom}}",file=filename,append=FALSE)
+write("%this file is not human-readable, it was created by 'fisher_number_maker.R'",file=filename,append=FALSE)
+write("\\multirow{25}{*}{\\rotatebox{90}{Denominator degrees of freedom}}",file=filename,append=TRUE)
 for(i in seq_len(nrow(x))){
   text_rows <- formatted(x[i,])
   bodyline <- paste("& {\\large ",rownames(x)[i],"}&",collapse="")  %>%

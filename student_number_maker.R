@@ -16,11 +16,7 @@ df <- c(1:29,Inf)
 x  <-
   expand.grid(p,df)                      %>% 
   apply(1,function(x){qt(x[1],df=x[2])}) %>%
-  matrix(ncol=length(p),byrow=TRUE)      %>%
-  round(3)
-
-x[x> 1] %<>% round(2) # two decimal places
-x[x>10] %<>% round(1) # only one decimal place for values >10
+  matrix(ncol=length(p),byrow=TRUE)
 
 formatted <- function(x){  # different formatting for one-digit and two-digit values
   out <- rep('na',length(x))

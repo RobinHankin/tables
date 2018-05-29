@@ -15,12 +15,7 @@ den <- c(1:20,25,30,40,50,Inf)
 x  <-
   expand.grid(num,den)                             %>% 
   apply(1,function(x){qf(0.95, df1=x[1],df=x[2])}) %>%
-  matrix(ncol=length(num),byrow=TRUE)              %>%
-  round(2)
-
-x[x>  1] %<>% round(2) # two decimal places
-x[x> 10] %<>% round(1) # only one decimal place for values >10
-x[x>100] %<>% round(0) # closest integer sufficient!
+  matrix(ncol=length(num),byrow=TRUE)
 
 formatted <- function(x){  # different formatting for one-digit and two-digit values
   out <- rep('na',length(x))
@@ -35,6 +30,7 @@ jj <- as.character(den)
 jj[jj=="Inf"] <- "$\\infty$"
 rownames(x) <- jj
 colnames(x) <-  num
+
 write("%this file is not human-readable, it was created by 'fisher_number_maker.R'",file=filename,append=FALSE)
 write("\\multirow{25}{*}{\\rotatebox{90}{Denominator degrees of freedom}}",file=filename,append=TRUE)
 for(i in seq_len(nrow(x))){

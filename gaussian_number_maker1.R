@@ -12,7 +12,6 @@ library("magrittr")
 x <- 
   seq(from=0, by=0.01,to=3.09) %>%
   pnorm                        %>%
-  round(4)                     %>%
   sprintf("%1.4f", .)          %>%
   sub("0." ,".",.)             %>%
   matrix(byrow=TRUE,ncol=10)   %>%

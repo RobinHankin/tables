@@ -6,7 +6,7 @@ library("magrittr")
 filename <- "log_table_values.txt"
 
 
-quick <- TRUE
+quick <- FALSE # change this for faster working when debugging
 if(quick){
   load("log.Rdata")
 } else {

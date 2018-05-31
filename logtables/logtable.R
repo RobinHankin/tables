@@ -1,7 +1,15 @@
-## Makes R variables table_main and table_Delta which are the main and
-## Delta parts of the log table.  Also makes simple_main and
-## simple_Delta which is the same but without the split rows of
-## table_main.
+## Makes R variables 'table_main' and 'table_Delta' (both matrices),
+## which are the main and Delta parts of the log table.  Also makes R
+## variables 'simple_main' and 'simple_Delta' which are the same but
+## without the split rows of 'table_main'.
+
+## These four matrices are numeric, not string, so need to be
+## processed to (eg) turn integer 86 into "0086" which would appear in
+## the finished table.
+
+## I am assuming that we know how log tables are used.
+
+
 
 
 rm(list=ls())
@@ -12,11 +20,10 @@ log <- function(...){stop("do not use log(), use log10() here")}
 
 func <- log10
 
-tablevalue <- function(x){ # try x=1.31, table gives .1173 [that is, the numerical equivalent of the table entry)
-  tableentry(x)/10000
-}
+tableentry <- function(x,numerical=TRUE){
+ ## try x=1.32, table entry is "1206" (that is, the actual table
+ ## entry, as it actually appears on the table; notionally an integer)
 
-tableentry <- function(x,numerical=TRUE){ # try x=1.32, table entry is "1206" (that is, the actual table entry, notional integer)
   out <- round(func(x)*10000)
   if(numerical){
     return(out)
@@ -25,15 +32,25 @@ tableentry <- function(x,numerical=TRUE){ # try x=1.32, table entry is "1206" (t
   }
 }
 
-tablevalue_delta <- function(x,Delta){# try x=1.31, delta=3, table
-                                        # gives 1173+3=1176 -> 0.1176
-                                        # returned
+tablevalue <- function(x){
+  ## try x=1.31, table gives .1173 [that is, the numerical equivalent
+  ## of the table entry as given by tableentry()
+
+  tableentry(x)/10000
+}
+
+
+tablevalue_delta <- function(x, Delta){
+  ## try x=1.31, delta=3, table gives 1173+3=1176 -> 0.1176 returned
+
   tablevalue(x) + Delta/10000  
 }
 
 tableerror <- function(x, third_digit, Delta){  
- ## for 1.326, use x=1.32,third_digit=6.  Function returns the
- ## numerical difference between the true value and the table value.
+  ## for 1.326, use x=1.32, third_digit=6.  Function returns the
+  ## *numerical* difference between the true value and the value given
+  ## by the table.
+
   true_value <- func(x+third_digit/1000)
   table_value <- tablevalue_delta(x,Delta=Delta)
   return(table_value-true_value)
@@ -41,12 +58,33 @@ tableerror <- function(x, third_digit, Delta){
 
 error <- function(x,third_digit,Delta){
   ## Returns the error from each of a series of x values.  Try
-  ## error(x=seq(from=1.3,by=0.01,to=1.34),third_digit=5,Delta=16)
+  ## error(x=seq(from=1.3,by=0.01,to=1.34),third_digit=5,Delta=16) and
+  ## compare this with
+  ## error(x=seq(from=1.3,by=0.01,to=1.34),third_digit=5,Delta=17) to
+  ## see whether Delta=16 is better or worse than Delta=17 for the "5"
+  ## entry of the differences on the "1.3" row of the table.  See how
+  ## a *single* Delta value (here we are choosing between 16 and 17)
+  ## gives rise to 10 different errors, one for each of 1.30 -> 1.305,
+  ## 1.31 -> 1.315, 1.32 -> 1.325,..., 1.39 -> 1.395.
+
   sapply(x,function(x){tableerror(x, third_digit=third_digit, Delta=Delta)})
 }
 
-
 badness <- function(x,third_digit,Delta,measure){
+  
+  ## As per the comments in error(), any Delta value [we were
+  ## comparing Delta=16 and Delta=17 above, for the '5' entry on the
+  ## '1.3' row] has associated with it 10 distinct errors, one for
+  ## each column of its row.  To choose a particular value of Delta,
+  ## here to choose whether 16 is preferable to 17, we need to
+  ## summarize the 10 error values.  We can do this either by
+  ## returning the maximum absolute error ('max'), the root mean
+  ## square error ('mse'), or the mean absolute deviation ('mad').
+  ## Function badness() returns either the max, mse, or mad as
+  ## required.  Note that these three different summary methods give
+  ## different measures of badness, and this means that the value of
+  ## Delta might differ between max,mse, and mad.
+  
   error <- error(x,third_digit,Delta)
   switch(measure,
          max=max(abs(error)),      # max = Maximum error
@@ -56,43 +94,52 @@ badness <- function(x,third_digit,Delta,measure){
 }
 
 differences <- function(x,show=FALSE){   
-  ## Finds the best value of Delta [it tries everything from 0 to 40],
-  ## with respect to the different badness measures above.
+  ## Given a particular value of x, which specifies a row of the
+  ## table, function differences() finds the "best" value of Delta [it
+  ## tries everything from Delta=0 to Delta=40] with respect to the
+  ## three different badness measures above.  Here "best" is defined
+  ## as "the value of Delta that minimizes the badness".
 
   third_digit <- 1:9
   max <- sapply(third_digit,function(d){which.min(sapply(0:40,function(Delta){badness(x,d,Delta,'max')}))-1})
   mse <- sapply(third_digit,function(d){which.min(sapply(0:40,function(Delta){badness(x,d,Delta,'mse')}))-1})
   mad <- sapply(third_digit,function(d){which.min(sapply(0:40,function(Delta){badness(x,d,Delta,'mad')}))-1})
 
-  ## NB: in the above three lines, the "-1" is because we start at
-  ## zero [in 0:40], not one [as in 1:40]; it possible for the optimal
-  ## Delta to be zero, and indeed this is the case for third_digit=1
-  ## if x\geqapprox 8.9 
+  ## NB: in the above three lines, "0:40" is the values of Delta that
+  ## we are looking at.  NB: the "-1" is because we start at zero
+  ## [i.e.  "0:40"], not one [which would be "1:40"]. This is because
+  ## it is possible for the optimal Delta to be zero, and indeed this
+  ## is the case for third_digit=1 if x\geqapprox 8.9
 
   ## Take max as an example.  'max' is a vector of 9 entries showing
   ## the optimal value of Delta for third_digit = 1,2,...,9 [here,
   ## 'optimal' means 'value of Delta that mimimizes the max() of the
   ## absolute error values'].
-
   
   out <- rbind(max,mse,mad)
-  colnames(out) <- as.character(1:9)
+  colnames(out) <- as.character(third_digit)
   out <- rbind(out,range=apply(out,2,function(x){max(x)-min(x)}))
 
   jj <- function(x){round(x*1e5)}
 
   if(show){
     out <- rbind(out,
-                 max_bad = jj(sapply(1:9,function(i){badness(x,i,max[i],'max')})),
-                 mse_bad = jj(sapply(1:9,function(i){badness(x,i,mse[i],'mse')})),
-                 mad_bad = jj(sapply(1:9,function(i){badness(x,i,mad[i],'mad')}))
+                 max_bad = jj(sapply(third_digit,function(i){badness(x,i,max[i],'max')})),
+                 mse_bad = jj(sapply(third_digit,function(i){badness(x,i,mse[i],'mse')})),
+                 mad_bad = jj(sapply(third_digit,function(i){badness(x,i,mad[i],'mad')}))
                  )
   }
   return(out)
 }
 
+di <- function(x,l,give=FALSE){ 
+  ## Function di() is a cut-down version of differences() which
+  ## returns a list of length two, the first element of which is the
+  ## main table entry for x, the second is the Delta entries.
 
-di <- function(x,l,give=FALSE){
+  ##  Argument 'l' is the length of the sequence; l=10 for the full
+  ##  lines but l=5 for the split entries at the top.
+  
   x <- seq(from=x,by=0.01,len=l)
   main_table <- tableentry(x)
   names(main_table) <- x
@@ -108,9 +155,10 @@ di <- function(x,l,give=FALSE){
   )
 }
 
-process_rownames <- function(x){ # turns "1" into "1.0", leaves "1.05"
-                                 # as "1.05", leaves "1.3" as "1.3" for use in the split row table
-
+process_rownames <- function(x){
+  ## Function process_rownames() makes the rownames suitable for
+  ## passing to LaTeX.  It turns "1" into "1.0", leaves "1.05" as
+  ## "1.05", leaves "1.3" as "1.3" for use in the split row table
 
   out <- as.character(x)
   odd <- round(x*100)%%10 != 0
@@ -119,7 +167,6 @@ process_rownames <- function(x){ # turns "1" into "1.0", leaves "1.05"
   
   return(out)
 }
-
 
 if(showdebug){
   x <- seq(from=2.4,by=0.01,len=10)

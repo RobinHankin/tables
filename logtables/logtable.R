@@ -9,11 +9,6 @@
 
 ## I am assuming that we know how log tables are used.
 
-
-
-
-rm(list=ls())
-
 showdebug <- FALSE
 
 log <- function(...){stop("do not use log(), use log10() here")}
@@ -229,3 +224,7 @@ rownames(simple_main) <- process_rownames(x)
 rownames(simple_Delta) <- rownames(simple_main)
 colnames(simple_main) <- 0:9
 colnames(simple_Delta) <- 1:9
+
+save(table_main,table_Delta, simple_main,simple_Delta, file="log.Rdata")
+
+

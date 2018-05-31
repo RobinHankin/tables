@@ -14,9 +14,8 @@
 
 \pagestyle{empty}
 \thispagestyle{empty}
-\begin{table}[ht]
-  \centering
-  \small
+\begin{centering}
+  {\small
 \begin{tabular}{|r|c|ccc|ccc|ccc|ccccccccc|}\hline
   &&&&&&&&&&&  \multicolumn{9}{|c|}{ADD} \\
   {\normalsize x}&
@@ -30,9 +29,11 @@
 \input{log_table_values_page1.txt}
 \hline
 \end{tabular}
-\end{table}
+}
+\end{centering}
 
-\noindent For example, the logarithm of 2.25 is 0.3522, directly from
+\noindent\rule{0mm}{5mm}
+For example, the logarithm of 2.25 is 0.3522, directly from
 the table.  To calculate the logarithm of~$1.267$, there are two rows
 for ``1.2''.  The first row is for second digits 0-4 and the other row
 is for second digits 5-9.  The second digit is ``6'', so we choose the
@@ -46,6 +47,20 @@ to give a result of $0.1028$.
       https://github.com/RobinHankin/tables.git}\rule{90mm}{0mm}\includegraphics[width=1in]{AUT-logo-block.pdf}};
 \end{tikzpicture}
 
-
+  \centering
+  \small
+\begin{tabular}{|r|c|ccc|ccc|ccc|ccccccccc|}\hline
+  &&&&&&&&&&&  \multicolumn{9}{|c|}{ADD} \\
+  {\normalsize x}&
+  {\normalsize 0}&{\normalsize 1}&{\normalsize 2}&
+  {\normalsize 3}&{\normalsize 4}&{\normalsize 5}&
+  {\normalsize 6}&{\normalsize 7}&{\normalsize 8}&
+  {\normalsize 9}&{\normalsize 1}&{\normalsize 2}&
+  {\normalsize 3}&{\normalsize 4}&{\normalsize 5}&
+  {\normalsize 6}&{\normalsize 7}&{\normalsize 8}&
+  {\normalsize 9}\\ \hline
+\input{log_table_values_page2.txt}
+\hline
+\end{tabular}
 \end{document}
 

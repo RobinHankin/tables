@@ -1,6 +1,5 @@
 \documentclass[a4paper]{article}
-
-\usepackage[margin=2cm]{geometry}
+\usepackage{geometry}
 \usepackage{amssymb}
 \usepackage{pdfpages}
 \usepackage{graphbox}
@@ -11,11 +10,10 @@
   {\Large\bf Values of the standard normal distribution function}
 \end{center}
 
-\rule{0mm}{5mm}
+
 \pagestyle{empty}
 \thispagestyle{empty}
-\begin{table}[ht]
-\centering
+\begin{centering}
 \begin{tabular}{r|llllllllll}
   \hline \rule{0mm}{4mm}
   & {\large .00} & {\large .01} & {\large .02} & {\large .03} & {\large .04}
@@ -24,7 +22,7 @@
 \input{gaussian_table_values1.txt}
   \hline
 \end{tabular}
-\end{table}
+\end{centering}
 
 \noindent
 \(\displaystyle P(Z\leqslant z)=\Phi(z)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^z\exp\left(-u^2/2\right)\,\mathrm{d}u\)\hfill\hbox{\includegraphics[align=c,width=2.2in]{gaussian_diagram1.pdf}}
@@ -32,16 +30,5 @@
 \noindent For example, to calculate \(P(Z\leqslant 2.93)\), the last
 line gives values for \(2.90-2.99\).  To find the value for 2.93,
 choose the entry with column heading ``.03'' to obtain 0.9983.
-
-
-\begin{tikzpicture}[remember picture,overlay]
-  \node[anchor=south east,
-    xshift=-1cm,
-    yshift=1cm]
-  at (current page.south east){
-    {\tt https://github.com/RobinHankin/tables.git}\rule{90mm}{0mm}\includegraphics[width=1in]{AUT-logo-block.pdf}};
-\end{tikzpicture}
-
-
-
+\input{footer}
 \end{document}

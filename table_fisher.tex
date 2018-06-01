@@ -1,6 +1,5 @@
 \documentclass[a4paper]{article}
-
-\usepackage[margin=2cm]{geometry}
+\usepackage{geometry}
 \usepackage{amssymb}
 \usepackage{pdfpages}
 \usepackage{graphbox}
@@ -16,7 +15,6 @@
 \rule{0mm}{5mm}
 \pagestyle{empty}
 \thispagestyle{empty}
-\begin{table}[ht]
 \centering
 \begin{tabular}{rr|ccccccccc}
   &&\multicolumn{9}{c}{Numerator degrees of freedom\rule[-4mm]{0mm}{4mm}}\\
@@ -24,7 +22,6 @@
 \input{fisher_table_values.txt}
   \hline
 \end{tabular}
-\end{table}
 
 \begin{centering}
 \includegraphics[align=c,width=2.2in]{fisher_diagram.pdf}
@@ -35,13 +32,9 @@ the Fisher distribution with 1 and 2 degrees of freedom, use the first
 column and the second row to find 18.5.  Thus, if~$X\sim F^1_2$,
 then~$P(X\leq 18.5) = 0.95$.
 
-\begin{tikzpicture}[remember picture,overlay]
-  \node[anchor=south east,
-    xshift=-1cm,
-    yshift=1cm]
-  at (current page.south east){
-    {\tt https://github.com/RobinHankin/tables.git}\rule{90mm}{0mm}\includegraphics[width=1in]{AUT-logo-block.pdf}};
-\end{tikzpicture}
+\input{footer}
+
 
 
 \end{document}
+

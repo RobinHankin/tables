@@ -1,6 +1,5 @@
 \documentclass[a4paper]{article}
-
-\usepackage[margin=2cm]{geometry}
+\usepackage{geometry}
 \usepackage{amssymb}
 \usepackage{pdfpages}
 \usepackage{graphbox}
@@ -11,10 +10,9 @@
   {\Large\bf Percentiles of the Student $\mathbf{t}$ distribution}
 \end{center}
 
-\rule{0mm}{5mm}
+
 \pagestyle{empty}
 \thispagestyle{empty}
-\begin{table}[ht]
 \centering
 \begin{tabular}{r|ccccc}
   \begin{minipage}{20mm}degrees\\of freedom\end{minipage}
@@ -28,7 +26,6 @@
 \input{student_table_values.txt}
   \hline
 \end{tabular}
-\end{table}
 
 \begin{centering}
 \includegraphics[align=c,width=2.2in]{student_diagram.pdf}
@@ -38,13 +35,6 @@
 one degree of freedom, the first line gives the different quantiles.
 Choose the entry with column heading~$t_{0.95}$ to obtain~6.31.
 
-\begin{tikzpicture}[remember picture,overlay]
-  \node[anchor=south east,
-    xshift=-1cm,
-    yshift=1cm]
-  at (current page.south east){
-    {\tt https://github.com/RobinHankin/tables.git}\rule{90mm}{0mm}\includegraphics[width=1in]{AUT-logo-block.pdf}};
-\end{tikzpicture}
-
+\input{footer}
 
 \end{document}

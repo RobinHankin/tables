@@ -1,6 +1,5 @@
 \documentclass[a4paper]{article}
-
-\usepackage[margin=2cm]{geometry}
+\usepackage{geometry}
 \usepackage{amssymb}
 \usepackage{pdfpages}
 \usepackage{graphbox}
@@ -54,15 +53,5 @@
   \end{center}
 \end{minipage}
 
-
-\begin{tikzpicture}[remember picture,overlay]
-  \node[anchor=south east,
-    xshift=-1cm,
-    yshift=1cm]
-  at (current page.south east){
-    {\tt https://github.com/RobinHankin/tables.git}\rule{90mm}{0mm}\includegraphics[width=1in]{AUT-logo-block.pdf}};
-\end{tikzpicture}
-
-
-
+\input{footer}
 \end{document}

@@ -5,7 +5,7 @@ rm(list=ls())
 library("magrittr")
 
 
-quick <- TRUE # change this for faster working when debugging
+quick <- FALSE # change this for faster working when debugging
 if(quick){
     load("antilog.Rdata")
 } else {

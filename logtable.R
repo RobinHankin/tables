@@ -1,3 +1,5 @@
+## This file is designed to be called by "log_number_maker.R".
+
 ## Makes R variables 'table_main' and 'table_Delta' (both matrices),
 ## which are the main and Delta parts of the log table.  Also makes R
 ## variables 'simple_main' and 'simple_Delta' which are the same but

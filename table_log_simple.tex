@@ -1,0 +1,67 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.8cm]{geometry}
+\usepackage{amssymb}
+\usepackage{pdfpages}
+\usepackage{graphbox}
+\usepackage{tikz}
+\usepackage{multirow} 
+\begin{document}
+
+\begin{samepage}
+\begin{center}
+  {\Large\bf Logarithms to base 10}
+\end{center}
+
+\pagestyle{empty}
+\thispagestyle{empty}
+
+\centerline{\small
+\begin{tabular}{|r|c|ccc|ccc|ccc|ccccccccc|}\hline
+  &&&&&&&&&&&  \multicolumn{9}{|c|}{ADD} \\
+  {\normalsize x}&
+  {\normalsize 0}&{\normalsize 1}&{\normalsize 2}&
+  {\normalsize 3}&{\normalsize 4}&{\normalsize 5}&
+  {\normalsize 6}&{\normalsize 7}&{\normalsize 8}&
+  {\normalsize 9}&{\normalsize 1}&{\normalsize 2}&
+  {\normalsize 3}&{\normalsize 4}&{\normalsize 5}&
+  {\normalsize 6}&{\normalsize 7}&{\normalsize 8}&
+  {\normalsize 9}\\ \hline
+\vphantom{$A^{A^A}$}
+\input{log_table_simple_values_page1.txt}
+\hline
+\end{tabular}
+}
+
+\noindent{\small For \rule{0mm}{5mm}example, the logarithm of 1.41 is
+  0.1492, directly from the table.  To calculate the logarithm
+  of~$1.412$, we incorporate the third digit by using the column
+  headed ``2'' in the differences, which gives $1492+6=1498$ to give a
+  result of $0.1498$.}
+
+\input{footer}
+\end{samepage}
+\newpage
+
+\vfill{\ }
+\vfill{\ }
+
+\centerline{\small
+\begin{tabular}{|r|c|ccc|ccc|ccc|ccccccccc|}\hline
+  &&&&&&&&&&&  \multicolumn{9}{|c|}{ADD} \\[1mm]
+  {\normalsize x}&
+  {\normalsize 0}&{\normalsize 1}&{\normalsize 2}&
+  {\normalsize 3}&{\normalsize 4}&{\normalsize 5}&
+  {\normalsize 6}&{\normalsize 7}&{\normalsize 8}&
+  {\normalsize 9}&{\normalsize 1}&{\normalsize 2}&
+  {\normalsize 3}&{\normalsize 4}&{\normalsize 5}&
+  {\normalsize 6}&{\normalsize 7}&{\normalsize 8}&
+  {\normalsize 9}\\ \hline
+  \vphantom{$A^{A^A}$}
+  \input{log_table_simple_values_page2.txt}
+\hline
+\end{tabular}
+}
+
+\vfill{\ }
+\end{document}
+

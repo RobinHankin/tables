@@ -23,7 +23,6 @@ formatted_main <- function(x){
 
 formatted_Delta <- function(x){sprintf("%04.0f",x)}
 
-
 table_filewriter <- function(filename,main,Delta,fun){
 
   write("%this file is not human-readable, it was created by 'log_number_maker.R'",file=filename,append=FALSE)
@@ -42,10 +41,17 @@ table_filewriter <- function(filename,main,Delta,fun){
   }
 }
 
-
+## Full table first:
 first_page <- 1:44
 linespacefunction1 <- function(i){ (i>6) & (i%%5==4) }
 linespacefunction2 <- function(i){  i%%5==0}
 
 table_filewriter("log_table_values_page1.txt",table_main[ first_page,],table_Delta[ first_page,],fun=linespacefunction1)
 table_filewriter("log_table_values_page2.txt",table_main[-first_page,],table_Delta[-first_page,],fun=linespacefunction2)
+
+
+## Now the simple table
+first_page <- 1:45
+
+table_filewriter("log_table_simple_values_page1.txt",simple_main[ first_page,],simple_Delta[ first_page,],fun=linespacefunction2)
+table_filewriter("log_table_simple_values_page2.txt",simple_main[-first_page,],simple_Delta[-first_page,],fun=linespacefunction2)

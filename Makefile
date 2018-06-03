@@ -23,6 +23,9 @@ all:
 	pdflatex table_log
 	pdflatex table_log_simple
 	pdflatex table_log_simple
+	R CMD BATCH antilog_number_maker.R
+	pdflatex table_antilog
+	pdflatex table_antilog
 
 clean:
 	rm -f  *.aux *.log *.out *.Rout *.txt chisq_diagram.pdf gaussian_diagram?.pdf fisher_diagram.pdf table*.pdf *.tex~

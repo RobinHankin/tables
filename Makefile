@@ -21,6 +21,8 @@ all:
 	R CMD BATCH log_number_maker.R
 	pdflatex table_log
 	pdflatex table_log
+	pdflatex table_log_simple
+	pdflatex table_log_simple
 
 clean:
 	rm -f  *.aux *.log *.out *.Rout *.txt chisq_diagram.pdf gaussian_diagram?.pdf fisher_diagram.pdf table*.pdf *.tex~

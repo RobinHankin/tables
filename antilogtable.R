@@ -284,6 +284,4 @@ colnames(antilogtable_main ) <- 0:9
 colnames(antilogtable_delta) <- 1:9
 
 
-save(table_main,table_Delta, file="antilog.Rdata")
-
-
+save(antilogtable_main,antilogtable_delta, file="antilog.Rdata")

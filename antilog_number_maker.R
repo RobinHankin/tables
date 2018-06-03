@@ -29,10 +29,10 @@ table_filewriter <- function(filename,main,Delta,fun){
     for(i in seq_len(nrow(main))){
     
         text_rows <- c(formatted_main(main[i,]),Delta[i,])
-        bodyline <- paste("{\\large ",rownames(main)[i],"}&",collapse="")  %>%
+        bodyline <- paste("{\\normalsize ",rownames(main)[i],"}&",collapse="")  %>%
             paste(paste(text_rows,collapse="&"))
         if(fun(i)){
-            bodyline %<>% paste("\\\\[3mm]")
+            bodyline %<>% paste("\\\\[2mm]")
         } else {
             bodyline %<>% paste("\\\\")
         }

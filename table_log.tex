@@ -1,11 +1,12 @@
 \documentclass[10pt]{article}
-\usepackage{geometry}
+\usepackage[margin=0.8cm]{geometry}
 \usepackage{amssymb}
 \usepackage{pdfpages}
 \usepackage{graphbox}
 \usepackage{tikz}
 \usepackage{multirow} 
 \begin{document}
+
 \begin{samepage}
 \begin{center}
   {\Large\bf Logarithms to base 10}
@@ -25,6 +26,7 @@
   {\normalsize 3}&{\normalsize 4}&{\normalsize 5}&
   {\normalsize 6}&{\normalsize 7}&{\normalsize 8}&
   {\normalsize 9}\\ \hline
+\vphantom{$A^{A^A}$}
 \input{log_table_values_page1.txt}
 \hline
 \end{tabular}
@@ -41,10 +43,14 @@
 
 \input{footer}
 \end{samepage}
+\newpage
+
+\vfill{\ }
+\vfill{\ }
 
 \centerline{\small
 \begin{tabular}{|r|c|ccc|ccc|ccc|ccccccccc|}\hline
-  &&&&&&&&&&&  \multicolumn{9}{|c|}{ADD} \\
+  &&&&&&&&&&&  \multicolumn{9}{|c|}{ADD} \\[1mm]
   {\normalsize x}&
   {\normalsize 0}&{\normalsize 1}&{\normalsize 2}&
   {\normalsize 3}&{\normalsize 4}&{\normalsize 5}&
@@ -53,9 +59,12 @@
   {\normalsize 3}&{\normalsize 4}&{\normalsize 5}&
   {\normalsize 6}&{\normalsize 7}&{\normalsize 8}&
   {\normalsize 9}\\ \hline
-\input{log_table_values_page2.txt}
+  \vphantom{$A^{A^A}$}
+  \input{log_table_values_page2.txt}
 \hline
 \end{tabular}
 }
+
+\vfill{\ }
 \end{document}
 

@@ -1,6 +1,8 @@
 .RData
 .Rproj.user
 .Rhistory
+log.RData
+antilog.RData
 *.Rout
 *.pdf
 *.aux

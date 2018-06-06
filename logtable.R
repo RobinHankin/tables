@@ -11,6 +11,12 @@
 
 ## I am assuming that we know how log tables are used.
 
+## The documentation of this file includes some overlap with that in
+## antilogtable.R, but the two files are sufficiently different to be
+## considered separately.
+
+
+
 showdebug <- FALSE
 
 log <- function(...){stop("do not use log(), use log10() here")}
@@ -129,13 +135,16 @@ differences <- function(x,show=FALSE){
   return(out)
 }
 
-di <- function(x,l,give=FALSE){ 
+di <- function(x,l,give=FALSE,norm_choice=1){ 
   ## Function di() is a cut-down version of differences() which
   ## returns a list of length two, the first element of which is the
   ## main table entry for x, the second is the Delta entries.
 
   ##  Argument 'l' is the length of the sequence; l=10 for the full
   ##  lines but l=5 for the split entries at the top.
+
+  ## there is more documentation in di() of antilogtable.R, which
+  ## discusses the norm_choice argument.
   
   x <- seq(from=x,by=0.01,len=l)
   main_table <- tableentry(x)
@@ -144,7 +153,7 @@ di <- function(x,l,give=FALSE){
   if(give){
     Delta <-  differences(x)
   } else {
-    Delta <-  differences(x)[1,]  ## Choose the max() badness measure
+    Delta <-  differences(x)[norm_choice,]  ## Choose the max() badness measure
   }
   list(
       main_table = main_table,

@@ -15,6 +15,12 @@
 
 ## I am assuming that we know how antilog tables are used.
 
+## As per discussion with David Wilson, argument 'norm_choice'
+## specifies which norm to use: max, mse, or mad.
+
+## The documentation of this file includes some overlap with that in
+## logtable.R, but the two files are sufficiently different to be
+## considered separately.
 
 showdebug <- TRUE
 
@@ -211,15 +217,17 @@ differences <- function(x,show=FALSE){## Given a particular value of x, which sp
     return(out)
 }
 
-
-
-di <- function(x,l,give=FALSE){ 
+di <- function(x,l,give=FALSE,norm_choice=1){ 
     ## Function di() is a cut-down version of differences() which
     ## returns a list of length two, the first element of which is the
     ## main table entry for x, the second is the Delta entries.
     
     ## There is no facility for split lines here.
 
+    ## Argument 'norm_choice' specifies which norm to use.  It
+    ## specifies which row of the output of differences() to use, so
+    ## currently norm_choice=1 gives max, 2 gives mse, and 3 gives
+    ## mad.
 
     ## > di(0.54,10)
     ## $main_table
@@ -238,7 +246,7 @@ di <- function(x,l,give=FALSE){
     if(give){
         Delta <-  differences(x)
     } else {
-        Delta <-  differences(x)[1,]  ## Choose the max() badness measure
+        Delta <-  differences(x)[norm_choice,]  ## Choose the max() badness measure
     }
     list(
         main_table = main_table,

@@ -1,12 +1,13 @@
-## This file is an modification of logtable.R but adapted for antilogs.
+## This file is a modification of logtable.R but adapted for antilogs.
+## Everything here and in logtable.R is base 10, not base 2.718
 
 ## This file is designed to be called by "antilog_number_maker.R".
 
-## Makes R variables 'table_main' and 'table_Delta' (both matrices),
-## which are the main and Delta parts of the antilog table.  These
-## variables correspond to the simple version of the log table (that
-## is, the version that does not have split lines for the rapidly
-## varying PPs).
+## This file makes R variables 'table_main' and 'table_Delta' (both
+## matrices), which are the main and Delta parts of the antilog table.
+## These variables correspond to the simple version of the log table
+## (that is, the version that does not have split lines for the
+## rapidly varying PPs).
 
 ## Antilog tables have some subtleties.  Take '0.55' as an example.
 ## The table entry is '3548' and the corresponding mathematical
@@ -21,6 +22,9 @@
 ## The documentation of this file includes some overlap with that in
 ## logtable.R, but the two files are sufficiently different to be
 ## considered separately.
+
+## This file defines a bunch of functions, whcich are called at the
+## end.
 
 showdebug <- TRUE
 
@@ -54,7 +58,6 @@ tablevalue <- function(x){
     tableentry(x)/1000
 }
 
-
 tablevalue_delta <- function(x, Delta){
     ## try x=0.502, delta=6, table gives 3177+6=3183 -> 3.183 returned
 
@@ -69,13 +72,14 @@ tablevalue_delta <- function(x, Delta){
 tableerror <- function(x, fourth_digit, Delta){  
     ## for 0.5127 use x=0.512, fourth_digit=7.  Function tableerror()
     ## returns the *numerical* difference between the true value and
-    ## the value given by the table.
+    ## the value given by the table if the entry in the difference
+    ## part of the table is Delta.
     
-    ## > tableerror(0.502, 7,4)
+    ## > tableerror(0.502, 7,4)    # try Delta=4
     ## [1] -0.0009987155
-    ## > tableerror(0.502, 7,5)    # this is the best value!
+    ## > tableerror(0.502, 7,5)    # try Delta=5; this is the best value!
     ## [1] 1.28447e-06
-    ## > tableerror(0.502, 7,6)
+    ## > tableerror(0.502, 7,6)    # try Delta=6
     ## [1] 0.001001284
     ## > 
 
@@ -111,10 +115,9 @@ error <- function(x,fourth_digit,Delta){
     sapply(x,function(x){tableerror(x, fourth_digit=fourth_digit, Delta=Delta)})
 }
 
-
-badness <- function(x,fourth_digit,Delta,measure){
+badness <- function(x, fourth_digit, Delta, measure){
   
-    ## As per the comments in error(), any Delta value [we were
+    ## As per the comments in error(), any Delta value [there, we were
     ## comparing Delta=7 and Delta=8 above, for the '8' entry on the
     ## '0.51' row] has associated with it 10 distinct errors, one for
     ## each column of its row.  To choose a particular value of Delta,
@@ -142,7 +145,8 @@ badness <- function(x,fourth_digit,Delta,measure){
            )
 }
 
-differences <- function(x,show=FALSE){## Given a particular value of x, which specifies a row of the
+differences <- function(x, show=FALSE){
+    ## Given a particular value of x, which specifies a row of the
     ## table, function differences() finds the "best" value of Delta [it
     ## tries everything from Delta=0 to Delta=40] with respect to the
     ## three different badness measures above.  Here "best" is defined
@@ -191,7 +195,7 @@ differences <- function(x,show=FALSE){## Given a particular value of x, which sp
     mad <- sapply(fourth_digit,function(d){which.min(sapply(0:40,function(Delta){badness(x,d,Delta,'mad')}))-1})
     
     ## NB: in the above three lines, "0:40" is the values of Delta that
-    ## we are looking at.  NB: the "-1" is because we start at zero
+    ## we are looking considering.  NB: the "-1" is because we start at zero
     ## [i.e.  "0:40"], not one [which would be "1:40"].  This is because
     ## it is possible for the optimal Delta to be zero.
     

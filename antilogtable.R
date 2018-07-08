@@ -23,8 +23,9 @@
 ## logtable.R, but the two files are sufficiently different to be
 ## considered separately.
 
-## This file defines a bunch of functions, whcich are called at the
-## end.
+## This file defines a bunch of functions, which are called at the
+## end; R variables antilogtable_main and antilogtable_delta are
+## created, and file antilog.Rdata is saved.
 
 showdebug <- TRUE
 

@@ -1,6 +1,8 @@
-## This file creates "antilog_table_values.txt" which holds suitably
-## rounded (integer!) values for the log table.
-## File log_table_values.txt is imported by table_log.tex.
+## This R file creates text "antilog_table_values.txt" which holds
+## suitably rounded (integer!) values for the antilog table.  File
+## log_table_values.txt is imported by table_log.tex with \input{}
+## latex command.
+
 rm(list=ls())
 library("magrittr")
 

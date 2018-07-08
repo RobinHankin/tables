@@ -3,7 +3,6 @@
 ## File log_table_values.txt is imported by table_log.tex.
 rm(list=ls())
 library("magrittr")
-filename <- "log_table_values.txt"
 
 
 quick <- FALSE # change this for faster working when debugging

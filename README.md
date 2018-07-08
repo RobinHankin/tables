@@ -15,7 +15,8 @@ density functions such as `student_diagram.pdf`; R files of the form
 `foo_number_maker.R` create text files with properly rounded and
 typeset table entries, such as `student_table_values.txt`.
 
-All the finished tables are of the form `table_foo.pdf`.
+All the finished tables are PDF format and have filenames of the
+form `table_foo.pdf`.
 
 
 

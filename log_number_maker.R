@@ -1,6 +1,13 @@
-## This file creates "log_table_values.txt" which holds suitably
-## rounded (integer!) values for the log table.
-## File log_table_values.txt is imported by table_log.tex.
+## This file creates several text files with names like
+## "log_table_values_page1.txt" which hold suitably rounded (integer!)
+## values for the log table.  This file defines a bunch of helper
+## functions, and at the end, table_filewriter() actually writes the
+## files.
+
+## The various .txt files are imported by latex files table_log.tex
+## and table_log_simple.tex using \input{} commands.
+
+
 rm(list=ls())
 library("magrittr")
 

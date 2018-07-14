@@ -8,7 +8,6 @@
 ## and table_log_simple.tex using \input{} commands.
 
 
-rm(list=ls())
 library("magrittr")
 
 

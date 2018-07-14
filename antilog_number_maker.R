@@ -3,7 +3,6 @@
 ## log_table_values.txt is imported by table_log.tex with \input{}
 ## latex command.
 
-rm(list=ls())
 library("magrittr")
 
 

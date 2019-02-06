@@ -125,19 +125,19 @@ error <- function(x,third_digit,Delta){
 
 badness <- function(x,third_digit,Delta,measure){
 
-  ## As per the comments in error(), any Delta value [we were
-  ## comparing Delta=16 and Delta=17 above, for the '5' entry on the
-  ## '1.3' row] has associated with it 5 or 10 distinct errors, one
-  ## for each column of its row.  To choose a particular value of
-  ## Delta, for example to choose whether 16 is preferable to 17, we
-  ## need to summarize *all* the error values associated with the
-  ## different values of Delta.  We can do this either by returning
-  ## the maximum absolute error ('max'), the root mean square error
-  ## ('mse'), or the mean absolute deviation ('mad').  Function
-  ## badness() returns either the max, mse, or mad as required.  Note
-  ## that these three different summary methods give different
-  ## measures of badness, and this means that the value of Delta might
-  ## differ between max,mse, and mad.
+    ## As per the comments in error(), any Delta value [we were
+    ## comparing Delta=16 and Delta=17 above, for the '5' entry on the
+    ## '1.3' row] has associated with it 5 or 10 distinct errors, one
+    ## for each column of its row.  To choose a particular value of
+    ## Delta, for example to choose whether 16 is preferable to 17, we
+    ## need to summarize *all* the error values associated with the
+    ## different values of Delta.  We can do this either by returning
+    ## the maximum absolute error ('max'), the root mean square error
+    ## ('mse'), or the mean absolute deviation ('mad').  Function
+    ## badness() returns either the max, mse, or mad as required.
+    ## Note that these three different summary methods give different
+    ## measures of badness, and this means that the value of Delta
+    ## might differ between max,mse, and mad.
 
   error <- error(x,third_digit,Delta)
   switch(measure,
@@ -149,12 +149,48 @@ badness <- function(x,third_digit,Delta,measure){
 
 differences <- function(x,show=FALSE){
 
-  ## Given a particular value of x, which specifies a row of the
-  ## table, function differences() finds the "best" value of Delta [it
-  ## tries everything from Delta=0 to Delta=40] with respect to the
-  ## three different badness measures above.  Here "best" is defined
-  ## as "the value of Delta that minimizes the badness".
+    ## Given a particular value of x, which specifies a row of the
+    ## table, function differences() finds the "best" values to use
+    ## for the entry in the differences section of the table [it tries
+    ## everything from Delta=0 to Delta=40] with respect to the three
+    ## different badness measures above.  Here "best" is defined as
+    ## "the value of Delta that minimizes the badness".
 
+    ## For example, suppose we are wondering what differences to use
+    ## in the 1.05-1.09 (half) line of the log table.  The Deltas need
+    ## to be good (ie low badness()) for all five numbers 1.05-1.09:
+    
+    ##    R> differences(seq(from=1.05,to=1.09,by=0.001))
+    ##       1 2  3  4  5  6  7  8  9
+    ## max   4 8 12 16 20 25 29 33 37
+    ## mse   4 8 12 16 20 24 28 32 36
+    ## mad   4 8 12 16 20 24 28 32 36
+    ## range 0 0  0  0  0  1  1  1  1
+    
+    ## If we want to use 'max' as a measure of badness, we use the
+    ## first row of the output in the table, which would be
+
+    ##  4 8 12 16 20 25 29 33 37
+
+    ## We see that the different badness measures give slightly
+    ## different results, with disagreement of one unit for 6-9.
+    ## Passing show=TRUE gives a little more information:
+
+    ##    R> differences(seq(from=1.05,to=1.09,by=0.001),show=TRUE)
+    ##         1 2  3  4  5  6  7  8  9
+    ## max     4 8 12 16 20 25 29 33 37
+    ## mse     4 8 12 16 20 24 28 32 36
+    ## mad     4 8 12 16 20 24 28 32 36
+    ## range   0 0  0  0  0  1  1  1  1
+    ## max_bad 6 6  7  9 10 11 10 10 10
+    ## mse_bad 3 3  3  4  4  5  5  6  6
+    ## mad_bad 2 3  3  3  3  4  4  4  5
+
+    ## In the above, the last three lines show the worst (ie highest)
+    ## badness score across the five numbers x <-
+    ## seq(from=1.05,to=1.09,by=0.0001) so we can get some insight
+    ## into how the badnesses are distributed across x
+    
   third_digit <- 1:9
   max <- sapply(third_digit,function(d){which.min(sapply(0:40,function(Delta){badness(x,d,Delta,'max')}))-1})
   mse <- sapply(third_digit,function(d){which.min(sapply(0:40,function(Delta){badness(x,d,Delta,'mse')}))-1})

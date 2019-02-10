@@ -232,8 +232,28 @@ di <- function(x,l,give=FALSE,norm_choice=1){
   ##  Argument 'l' is the length of the sequence; l=10 for the full
   ##  lines but l=5 for the split entries at the top.
 
-  ## there is more documentation in di() of antilogtable.R, which
-  ## discusses the norm_choice argument.
+  ## Argument 'norm_choice' specifies which norm to use in badness().
+  ## It specifies which row of the output of differences() to use, so
+  ## currently norm_choice=1 gives max, 2 gives mse, and 3 gives mad.
+
+  ## To reproduce the 1.1 line (which is split) of the log table:
+
+  ## R> di(1.1,5)
+  ## $main_table
+  ##  1.1 1.11 1.12 1.13 1.14 
+  ##  414  453  492  531  569 
+  ##
+  ## $Delta
+  ##  1  2  3  4  5  6  7  8  9 
+  ##  4  8 12 15 19 23 27 31 35 
+  
+  ## So the above gives the main body of the table ("0414 0453 0492
+  ## 0531 0569") together with the differences ("4 8 12...35").  The
+  ## norm_choice argument of the di() function specifies which row of
+  ## the output of differences() to use.  The rows are max, mse, mad;
+  ## these are defined in badness().  So the default of norm_choice=1
+  ## corresponds to the first row, which is max.
+  
 
   x <- seq(from=x,by=0.01,len=l)
   main_table <- tableentry(x)
@@ -251,6 +271,7 @@ di <- function(x,l,give=FALSE,norm_choice=1){
 }
 
 process_rownames <- function(x){
+
   ## Function process_rownames() makes the rownames suitable for
   ## passing to LaTeX.  It turns "1" into "1.0", leaves "1.05" as
   ## "1.05", leaves "1.3" as "1.3" for use in the split row table

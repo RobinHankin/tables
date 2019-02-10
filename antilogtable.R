@@ -227,7 +227,8 @@ di <- function(x,l,give=FALSE,norm_choice=1){
     ## returns a list of length two, the first element of which is the
     ## main table entry for x, the second is the Delta entries.
     
-    ## There is no facility for split lines here.
+    ## There is no facility for split lines here (split lines are
+    ## needed only in the log-table; see logtable.R for split lines).
 
     ## Argument 'norm_choice' specifies which norm to use.  It
     ## specifies which row of the output of differences() to use, so

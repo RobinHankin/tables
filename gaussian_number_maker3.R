@@ -15,7 +15,7 @@ library("magrittr")
 write("%this file is not human-readable, it was created by 'gaussian_number_maker3.R'",file=filename,append=FALSE)
 
 for(i in qq){
-  bodyline <- paste(i,sprintf("%4.4f",qnorm(i/2)), sep=" & ") %>% paste("\\\\")
+  bodyline <- paste(i,sprintf("%4.4f",-qnorm(i/2)), sep=" & ") %>% paste("\\\\")
   write(bodyline,file=filename,append=TRUE)
 }
 

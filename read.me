@@ -1,6 +1,22 @@
-File "table_gaussian_distribution_function.pdf" is produced from
-"table_gaussian_distribution.tex" using pdflatex, as per the Makefile.
-The diagram is made by "sourcing gaussian_diagram.R" in R, which
-produces "gaussian_diagram.pdf"; the numbers come from
+This repo creates publication-quality pdf files of lookup tables.
+Currently, eight tables are created:
+
+table_antilog.pdf
+table_chisq.pdf
+table_fisher.pdf
+table_gaussian_distribution_function.pdf
+table_gaussian_percentiles.pdf
+table_log.pdf
+table_log_simple.pdf
+table_student.pdf
+
+
+
+File "table_gaussian_distribution_function.pdf", for example, is
+produced from "table_gaussian_distribution.tex" using pdflatex, as per
+the Makefile.  The diagram is made by sourcing "gaussian_diagram.R" in
+R, which produces "gaussian_diagram.pdf"; the numbers come from
 "gaussian_number_maker.R", which creates a data frame that is the
 correct shape and is also correctly rounded to 4 decimal places.
+
+The other pdf files are created in a similar way.

@@ -44,7 +44,7 @@ pdf(file="gaussian_diagram3.pdf",width=5,height=3)
   shading(+1,+3)
   outline()
   par(xpd=TRUE)
-  text(-1,-0.1,'K')
+  text(-1,-0.1,'-K')
   text(+1,-0.1,'K')
 }
 dev.off()

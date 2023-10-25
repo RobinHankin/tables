@@ -1,11 +1,14 @@
-## This file creates several text files with names like
-## "log_table_values_page1.txt" which hold suitably rounded (integer!)
-## values for the log table.  This file defines a bunch of helper
-## functions, and at the end, table_filewriter() actually writes the
-## files.
+## This file, log_number_maker.R, creates several text files with
+## names like "log_table_values_page1.txt" which hold suitably rounded
+## (integer!)  values for the log table.  The various .txt files are
+## imported by latex files table_log.tex and table_log_simple.tex
+## using \input{} commands.
 
-## The various .txt files are imported by latex files table_log.tex
-## and table_log_simple.tex using \input{} commands.
+## Below, we source file "logtable.R" which creates R matrices such as
+## table_main and simple_Delta which hold numerical values.  Then we
+## define a bunch of helper functions, and at the end,
+## table_filewriter() actually writes the files.
+
 
 
 library("magrittr")

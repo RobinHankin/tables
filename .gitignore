@@ -4,7 +4,6 @@
 log.RData
 antilog.RData
 *.Rout
-*.pdf
 *.aux
 *.log
 *.txt
@@ -12,3 +11,17 @@ antilog.RData
 *.tex~
 *.R~
 .gitignore~
+chisq_diagram.pdf
+fisher_diagram.pdf
+gaussian_diagram1.pdf
+gaussian_diagram2.pdf
+gaussian_diagram3.pdf
+student_diagram.pdf
+table_antilog.pdf
+table_chisq.pdf
+table_fisher.pdf
+table_gaussian_distribution_function.pdf
+table_gaussian_percentiles.pdf
+table_log.pdf
+table_log_simple.pdf
+table_student.pdf

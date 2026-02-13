@@ -12,6 +12,11 @@ then pdflatex the tex files to create the tables.  The tex files use
 PDF files.  You will need to latex files twice to get the logo in the
 right position.
 
+Some installations do not have all the necessary latex packages
+installed.  Packages graphbox and multirow in particular are sometimes
+missing.  If so, files graphbox.sty multirow.sty are needed.  These
+are not held under version control.
+
 R files of the form `foo_diagram.R` create the little pictures of the
 density functions such as `student_diagram.pdf`; R files of the form
 `foo_number_maker.R` create text files with properly rounded and
